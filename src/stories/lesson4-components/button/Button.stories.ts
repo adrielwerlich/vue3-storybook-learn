@@ -11,6 +11,7 @@ const meta = {
   argTypes: {
     size: { control: 'select', options: ['small', 'medium', 'large'] },
     backgroundColor: { control: 'color' },
+    color: { control: 'color' },
     onClick: { action: 'clicked' },
   },
   args: { primary: false }, // default value

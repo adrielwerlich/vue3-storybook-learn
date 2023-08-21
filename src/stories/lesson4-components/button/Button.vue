@@ -23,8 +23,12 @@ const props = withDefaults(defineProps<{
    * background color of the button
    */
   backgroundColor?: string,
+  /**
+   * label color of the button
+   */
+  color?: string,
 
-}>(), { primary: false });
+}>(), { primary: false, color: '#000', });
 
 const emit = defineEmits<{
   (e: 'click', id: number): void;
@@ -38,7 +42,8 @@ const classes = computed(() => ({
 }));
 
 const style = computed(() => ({
-  backgroundColor: props.backgroundColor
+  backgroundColor: props.backgroundColor,
+  color: props.color,
 }));
 
 const onClick = () => {
