@@ -65,11 +65,11 @@
   };
   
   const buttonABackgroundColor = computed(() => {
-    return btnA.value.active ? '#FF0000' : 'gray';
+    return btnA.value.active ? '#F65261' : '#424242';
   });
 
   const buttonBBackgroundColor = computed(() => {
-    return btnB.value.active ? '#FF0000' : 'gray';
+    return btnB.value.active ? '#F65261' : '#424242';
   });
   </script>
   

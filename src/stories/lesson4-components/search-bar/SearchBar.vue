@@ -44,7 +44,7 @@ import {ButtonAStandard, ButtonBStandard} from '../filter-options-toggler/Defaul
      */
     searchInputWidth: number,
 
-  }>(), {btnBackgroundColor: '#FF0000', searchInputWidth: 50});
+  }>(), {btnBackgroundColor: '#F65261', searchInputWidth: 50});
 
 
   const searchText = ref('');
