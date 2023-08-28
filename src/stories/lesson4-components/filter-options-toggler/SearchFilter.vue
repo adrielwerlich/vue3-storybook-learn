@@ -3,8 +3,20 @@
     <div class="toggler">
       <label>{{ filterLabel }}</label>
       <div class="button-container">
-        <Btn class="contiguous-button" :label="btnA.label" ref="buttonARef" :backgroundColor="buttonABackgroundColor" @click="toggle('A')" />
-        <Btn class="contiguous-button" :label="btnB.label" ref="buttonBRef" :backgroundColor="buttonBBackgroundColor" @click="toggle('B')" />
+        <Btn
+          class="contiguous-button"
+          :label="btnA.label"
+          ref="buttonARef"
+          :backgroundColor="buttonABackgroundColor"
+          @click="toggle('Title')" 
+        />
+        <Btn
+          class="contiguous-button"
+          :label="btnB.label"
+          ref="buttonBRef"
+          :backgroundColor="buttonBBackgroundColor"
+          @click="toggle('Genre')"
+        />
       </div>
     </div>
   </template>
@@ -45,23 +57,29 @@
 
   }>(), {});
 
-  console.log(props, '111')
-  console.log({...props}, '222')
+  const emit = defineEmits<{
+    (e: 'change', activeFilter: string): void;
+  }>();
 
-  const {buttonA, buttonB} = props
+  const onChange = (filterBy: string) => {
+    emit("change", filterBy)
+  };
+
+
+  const { buttonA, buttonB } = props
   const btnA = ref(buttonA)
   const btnB = ref(buttonB)
 
   const toggle = (button: string) => {
-    console.log(props)
-    if (button === 'A') {
+    // console.log(props)
+    if (button === 'Title') {
       btnA.value.active = true;
       btnB.value.active = false;
     } else {
       btnA.value.active = false;
       btnB.value.active = true;
     }
-
+    onChange(button);
   };
   
   const buttonABackgroundColor = computed(() => {
@@ -71,6 +89,8 @@
   const buttonBBackgroundColor = computed(() => {
     return btnB.value.active ? '#F65261' : '#424242';
   });
+
+
   </script>
   
   <style scoped>

@@ -1,16 +1,35 @@
 <template>
     <div class="search-bar">
       <div style="width: 100%;">
-        <input v-model="searchText" :placeholder="inputPlaceholder" :style="`width: ${searchInputWidth}%`" class="search-input"/>
-        <Btn :label="buttonLabel" :backgroundColor="btnBackgroundColor" :color="btnLabelColor" @click="searchBtnClicked" />
+        <input
+          v-model="searchText"
+          :placeholder="inputPlaceholder"
+          :style="`width:${searchInputWidth}%`" 
+          class="search-input"
+        />
+        
+        <Btn
+          :label="buttonLabel"
+          :backgroundColor="btnBackgroundColor"
+          :color="btnLabelColor"
+          @click="searchBtnClicked"
+        />
       </div>
 
-      <SearchFilter :buttonA="ButtonAStandard" :buttonB="ButtonBStandard" :filterLabel="'Search By'" />
+      <SearchFilter
+        :buttonA="ButtonAStandard"
+        :buttonB="ButtonBStandard"
+        :filterLabel="'Search By'" 
+        @change="getFilter"
+      />
     </div>
   </template>
   
-  <script lang="ts" setup>
-import {ButtonAStandard, ButtonBStandard} from '../filter-options-toggler/DefaultValues.js';
+<script lang="ts" setup>
+import {
+  ButtonAStandard, 
+  ButtonBStandard
+} from '../filter-options-toggler/DefaultValues.js';
 
   import { ref } from 'vue';
   import { computed } from 'vue';
@@ -18,7 +37,9 @@ import {ButtonAStandard, ButtonBStandard} from '../filter-options-toggler/Defaul
 
   import SearchFilter from '../filter-options-toggler/SearchFilter.vue';
 
-  
+  const getFilter = (activeFilter: string) => {
+    console.log('active filter:', activeFilter);
+  };
 
   const props = withDefaults(defineProps<{
     /**
